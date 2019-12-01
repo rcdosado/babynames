@@ -22,5 +22,22 @@ class BabyNamesModel extends Model
 		return $result;
 
 	}
+	public function getName($id=null)
+	{
+		$db = \Config\Database::connect();
+
+		$sql = "SELECT * FROM names WHERE id = :id:";
+
+		try {
+			$query = $db->query($sql,[
+				'id' => $id
+			]);
+		} catch (\Exception $e) {
+			die($e->getMessage());
+		}
+
+		return $query->getResultArray()[0];
+
+	}
 }
 

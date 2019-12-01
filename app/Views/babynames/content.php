@@ -66,7 +66,7 @@
                                                 <td>
                                                       <?=$name['meaning'] ?>
                                                 </td>
-                                                <td><a href="#">Edit</a></td>
+                                                <td><a href="<?= site_url('edit')."/".$name['id'] ?>">Edit</a></td>
                                                 <td><a href="#" onClick="return confirm('Are you sure you want to delete this record?')">Delete</a> </td>
                                         </tr>                                               
                             <?php endforeach; ?>

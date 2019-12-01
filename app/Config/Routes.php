@@ -75,6 +75,9 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'BabyNames::index');
 $routes->match(['get','post'], 'add/','BabyNames::add');
+$routes->get('edit/(:num)','BabyNames::edit/$1');
+$routes->post('edit','BabyNames::edit');
+
 
 
 /**
