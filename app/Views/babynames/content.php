@@ -1,3 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                   <a class="nav-link" href="#"><h2><?= $title ?></h2><span class="sr-only">(current)</span></a>
+                </li>
+        </ul>
+        <form class="form-inline" role="form" action="search.php" method="GET">
+                        <div class="form-group">
+
+                                <input type="text" class="form-control" name="query" placeholder="Search Baby Names">
+                                <select class="form-control" id="FormControlSelect1" name="field">
+                                      <option>name</option>
+                                      <option>gender</option>
+                                      <option>origin</option>
+                                      <option>meaning</option>
+                                </select>
+                        </div>
+                <button type="submit" class="btn btn-info" name="submit" >Search</button>
+                <a href="<?= site_url('add') ?>" class="btn btn-danger" role="button">Add New</a>                
+        </form>
+  </div>
+</nav>
 <div class="row">
         <div class="col-md-12">
                 <div class="container">

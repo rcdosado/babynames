@@ -74,6 +74,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->get('/', 'BabyNames::index');
+$routes->match(['get','post'], 'add/','BabyNames::add');
+
 
 /**
  * --------------------------------------------------------------------
