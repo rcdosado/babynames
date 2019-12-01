@@ -6,15 +6,50 @@ class BabyNames extends BaseController
 {
 	public function index()
 	{
+		$pager = \Config\Services::pager();
+		$request = \Config\Services::request();
 		$model = new BabyNamesModel();
 
 		$builder = $model->builder();
-		$result = $model->getAllNames($builder);
 
-		$data = [
-			'title' => 'Baby Names List',
-			'babynames' => $result,
-		];
+		$query = $request->getGET('query');
+		$field = $request->getGET('field');
+
+        if(!empty($query) && !empty($field))
+        {
+        	$time_pre = microtime(true);        	
+        	$result = $model->search($builder,$query,$field);      	
+	        $time_post = microtime(true);
+			$exec_time = $time_post - $time_pre;
+
+        	$data = [
+				'title' => 'Baby Names List',
+				'babynames' => $result,   
+				'count' => $pager->getPageCount()>1?$pager->getPageCount()*20:"less than 20",
+				'time' =>$exec_time,
+                'query' => $query,
+                'field' => $field,				
+                'ip' => $_SERVER['HTTP_HOST'],
+        	];
+        }
+        else
+        {
+        	$time_pre = microtime(true);        	
+			$result = $model->getAllNames($builder);
+	        $time_post = microtime(true);			
+			$data = [
+				'title' => 'Baby Names List',
+				'babynames' => $result,
+				'count' => $pager->getPageCount()>1?$pager->getPageCount()*20:"less than 20",
+				'time' =>$exec_time,				
+                'query' => $query,
+                'field' => $field,				
+                'ip' => $_SERVER['HTTP_HOST'],				
+			];
+
+        }
+
+        $data += ['pager' => $pager];
 
 		echo view('templates/header');		
 		echo view('babynames/content',$data);		

@@ -73,8 +73,10 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-$routes->get('/', 'BabyNames::index');
 $routes->match(['get','post'], 'add/','BabyNames::add');
+$routes->get('/', 'BabyNames::index');
+$routes->get('/(:segment)', 'BabyNames::index/$1');
+
 $routes->get('edit/(:num)','BabyNames::edit/$1');
 $routes->post('edit','BabyNames::edit');
 $routes->get('delete/(:num)','BabyNames::delete/$1');

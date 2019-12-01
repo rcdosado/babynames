@@ -8,6 +8,25 @@ class BabyNamesModel extends Model
 	protected $primaryKey = 'id';
 	protected $allowedFields = ['name', 'gender', 'origin', 'meaning'];
 
+	public function search($builder,$query, $field)
+	{			
+
+		try{               
+
+			 $builder->like($field, $query);
+			 $builder->orderBy("name","asc");
+
+             $result = $builder->paginate(20);
+             // echo (string)$db->getLastQuery();
+
+		}catch(\Exception $e){
+			die($e->getMessage());
+		}
+
+		return $result;
+
+	}	
+	
 	public function getAllNames($builder)
 	{
 		try{

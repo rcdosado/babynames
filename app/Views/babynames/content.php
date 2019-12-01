@@ -6,10 +6,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                   <a class="nav-link" href="#"><h2><?= $title ?></h2><span class="sr-only">(current)</span></a>
+                   <a class="nav-link" href="<?= site_url() ?>"><h2><?= $title ?></h2><span class="sr-only">(current)</span></a>
                 </li>
         </ul>
-        <form class="form-inline" role="form" action="search.php" method="GET">
+        <form class="form-inline" role="form" action="<?= site_url()?>" method="GET">
                         <div class="form-group">
 
                                 <input type="text" class="form-control" name="query" placeholder="Search Baby Names">
@@ -29,9 +29,9 @@
         <div class="col-md-12">
                 <div class="container">
                   <div class="row">
-                    <div class="col-md-6" style="color: #bbb;">
+                    <div class="col-md-8" style="color: #bbb;">
                 
-                        <caption>About 250 results (0.171 seconds) requested by 127.0.0.1</caption>
+                        <caption><?= "About $count results ($time seconds) requested by $ip" ?></caption>
     
                     </div>
                   </div>
@@ -76,4 +76,11 @@
         </div>
 
 
+</div>
+<div class="row">
+   <div class="col-md-12">
+    <div class="container">
+        <?= $pager->links() ?>    
+    </div>
+  </div>
 </div>
