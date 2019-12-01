@@ -52,7 +52,7 @@
                             <?php foreach ($babynames as $name): ?>
                                         <tr>
                                                 <td>
-                                                      <a href="#"><?= $name['id'] ?></a>    
+                                                      <a href="<?= site_url('info/').$name['id']?>"><?= $name['id'] ?></a>    
                                                 </td>
                                                 <td>
                                                       <?=$name['name'] ?>
@@ -67,7 +67,7 @@
                                                       <?=$name['meaning'] ?>
                                                 </td>
                                                 <td><a href="<?= site_url('edit')."/".$name['id'] ?>">Edit</a></td>
-                                                <td><a href="#" onClick="return confirm('Are you sure you want to delete this record?')">Delete</a> </td>
+                                                <td><a href="<?= site_url('delete/').$name['id'] ?>" onClick="return confirm('Are you sure you want to delete this record?')">Delete</a> </td>
                                         </tr>                                               
                             <?php endforeach; ?>
                           <?php endif; ?>

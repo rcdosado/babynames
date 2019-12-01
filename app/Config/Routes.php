@@ -77,6 +77,9 @@ $routes->get('/', 'BabyNames::index');
 $routes->match(['get','post'], 'add/','BabyNames::add');
 $routes->get('edit/(:num)','BabyNames::edit/$1');
 $routes->post('edit','BabyNames::edit');
+$routes->get('delete/(:num)','BabyNames::delete/$1');
+
+$routes->get('info/(:num)', 'BabyNames::info/$1');
 
 
 

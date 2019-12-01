@@ -21,6 +21,36 @@ class BabyNames extends BaseController
 		echo view('templates/footer');		
 	}
 
+	public function info($id=null)
+	{
+        $dbConnect= new BabyNamesModel();
+
+		$data = [
+				'title' => 'Baby Names',
+				'babyname' => $dbConnect->getName($id),
+		];	
+		echo view('templates/header');
+		echo view('babynames/info',$data);
+		echo view('templates/footer');		
+	}
+
+	public function delete($id=null)
+	{
+		$dbConnect = new BabyNamesModel();
+
+
+		if($id==null || empty($id) )
+			return redirect()->to(site_url());
+
+		try {
+			$dbConnect->delete($id);
+		} catch (\Exception $e) {
+			die($e->getMessage())		;
+		}
+		return redirect()->to(site_url());
+
+	}
+
 	public function edit($id=null)
 	{
 		$dbConnect = new BabyNamesModel();
@@ -48,7 +78,7 @@ class BabyNames extends BaseController
 	                'gender'=>$request->getPost('gender'),
 	                'origin'=>$request->getPost('origin'),					
 				];
-				
+
 				// save to database
 				try {
 					$result = $dbConnect->update($request->getPost('id'),$newName);
