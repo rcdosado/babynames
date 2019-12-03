@@ -16,7 +16,7 @@ class BabyNamesModel extends Model
 			 $builder->like($field, $query);
 			 $builder->orderBy("name","asc");
 
-             $result = $builder->paginate(20);
+             $result = $builder->paginate(RECORDS_PER_PAGE);
              // echo (string)$db->getLastQuery();
 
 		}catch(\Exception $e){
@@ -32,7 +32,7 @@ class BabyNamesModel extends Model
 		try{
 
 			$builder->orderBy("id","desc");
-			$result = $builder->paginate(50);
+			$result = $builder->paginate(RECORDS_PER_PAGE);
 
 		}catch(\Exception $e)
 		{

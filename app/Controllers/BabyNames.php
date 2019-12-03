@@ -25,7 +25,7 @@ class BabyNames extends BaseController
         	$data = [
 				'title' => 'Baby Names List',
 				'babynames' => $result,   
-				'count' => $pager->getPageCount()>1?$pager->getPageCount()*20:"less than 20",
+				'count' => $pager->getPageCount()>1?$pager->getPageCount()*RECORDS_PER_PAGE:"less than ".RECORDS_PER_PAGE,
 				'time' =>$exec_time,
                 'query' => $query,
                 'field' => $field,				
@@ -40,7 +40,7 @@ class BabyNames extends BaseController
 			$data = [
 				'title' => 'Baby Names List',
 				'babynames' => $result,
-				'count' => $pager->getPageCount()>1?$pager->getPageCount()*20:"less than 20",
+				'count' => $pager->getPageCount()>1?$pager->getPageCount()*RECORDS_PER_PAGE:"less than ".RECORDS_PER_PAGE,
 				'time' =>$exec_time,				
                 'query' => $query,
                 'field' => $field,				
