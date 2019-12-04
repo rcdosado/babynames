@@ -18,6 +18,7 @@ MySQL 7+
 2. execute baby_names.sql to your mysql instance
 3. point apache webserver webroot to CI4 public folder 
 4. change account information for mysql <this Repository>/app/config/database.php
-5. go to localhost:80 or simply localhost
+5. start Apache & mysql 
+6. go to localhost:80 or simply localhost
 
 
